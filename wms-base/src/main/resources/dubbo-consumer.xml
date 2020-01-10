@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://code.alibabatech.com/schema/dubbo  
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <dubbo:application name="wms-base"/>
+
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <!-- 注册中心地址 -->
+    <dubbo:registry protocol="zookeeper" address="${zookeeper.addr}"/>
+    <!-- 去掉超时重试 -->
+    <dubbo:provider delay="-1" timeout="1200000" retries="0"/>
+    <!-- 基础数据服务接口-->
+    <dubbo:reference interface="com.tudou.base.customer.service.ICustomerService" id="customerService" check="false"/>
+    <dubbo:reference interface="com.tudou.base.emp.service.IEidpEmpService" id="eidpEmpService" check="false"/>
+    <dubbo:reference interface="com.tudou.base.warehouse.service.IWarehouseService" id="warehouseService"
+                     check="false"/>
+    <dubbo:reference interface="com.tudou.base.vendor.service.IVendorGoodsService" id="eidpVendorGoodsService"
+                     check="false"/>
+    <dubbo:reference interface="com.tudou.base.vendor.service.IVendorService" id="vendorService" check="false"/>
+    <dubbo:reference interface="com.tudou.base.goods.service.IGoodsBrandService" id="goodsBrandService" check="false"/>
+    <dubbo:reference interface="com.tudou.base.goods.service.IGoodsService" id="goodsArchiveService" check="false"/>
+    <dubbo:reference interface="com.tudou.base.goods.service.IGoodsTypeService" id="baseGoodsTypeService"
+                     check="false"/>
+    <dubbo:reference interface="com.tudou.base.goods.service.IGoodsUnitService" id="goodsUnitService" check="false"/>
+    <dubbo:reference interface="com.tudou.base.common.service.ICommonService" id="commonService" check="false"/>
+
+    <!-- CRM服务接口-->
+    <dubbo:reference interface="com.tudou.crm.purchase.purchaseApply.service.IPurchaseApplyPartService"
+                     id="purchaseApplyPartService" check="false"/>
+    <dubbo:reference interface="com.tudou.crm.purchase.purchaseApply.service.IPurchaseApplyService"
+                     id="purchaseApplyService" check="false"/>
+    <dubbo:reference interface="com.tudou.crm.purchase.purchaseOrder.service.IPurchaseOrderPartService"
+                     id="purchaseOrderPartService" check="false"/>
+    <dubbo:reference interface="com.tudou.crm.purchase.purchaseOrder.service.IPurchaseOrderService"
+                     id="purchaseOrderService" check="false"/>
+
+    <dubbo:reference interface="com.tudou.crm.sales.service.ISalesOrderPartService"
+                     id="salesOrderPartService" check="false"/>
+    <dubbo:reference interface="com.tudou.crm.sales.service.ISalesOrderService"
+                     id="salesOrderService" check="false"/>
+    <dubbo:reference interface="com.tudou.crm.stock.stockBegin.service.IStockBeginService"
+                     id="stockBeginService" check="false"/>
+    <dubbo:reference interface="com.tudou.crm.stock.stockPart.service.IStockPartService"
+                     id="stockPartService" check="false"/>
+    <dubbo:reference interface="com.tudou.crm.stock.stockTrade.service.IStockTradeService"
+                     id="stockTradeLogService" check="false"/>
+    <dubbo:reference interface="com.tudou.crm.storage.inStorage.service.IInStorageWorkPartService"
+                     id="inStorageWorkPartService" check="false"/>
+    <dubbo:reference interface="com.tudou.crm.storage.inStorage.service.IInStorageWorkService"
+                     id="inStorageWorkService" check="false"/>
+    <dubbo:reference interface="com.tudou.crm.storage.outStorage.service.IOutStorageWorkPartService"
+                     id="outStorageWorkPartService" check="false"/>
+    <dubbo:reference interface="com.tudou.crm.storage.outStorage.service.IOutStorageWorkService"
+                     id="outStorageWorkService" check="false"/>
+</beans>  

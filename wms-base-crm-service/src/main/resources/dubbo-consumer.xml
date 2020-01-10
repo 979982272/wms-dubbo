@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://code.alibabatech.com/schema/dubbo  
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- 去掉超时重试 -->
+    <dubbo:provider delay="-1" timeout="1200000" retries="0"/>
+    <!-- 用户服务接口 -->
+    <dubbo:reference interface="com.tudou.base.customer.service.ICustomerService" id="customerService" check="false"/>
+    <dubbo:reference interface="com.tudou.base.emp.service.IEidpEmpService" id="eidpEmpService" check="false"/>
+    <dubbo:reference interface="com.tudou.base.warehouse.service.IWarehouseService" id="warehouseService"
+                     check="false"/>
+    <dubbo:reference interface="com.tudou.base.vendor.service.IVendorGoodsService" id="eidpVendorGoodsService"
+                     check="false"/>
+    <dubbo:reference interface="com.tudou.base.vendor.service.IVendorService" id="vendorService" check="false"/>
+    <dubbo:reference interface="com.tudou.base.goods.service.IGoodsBrandService" id="goodsBrandService" check="false"/>
+    <dubbo:reference interface="com.tudou.base.goods.service.IGoodsService" id="goodsArchiveService" check="false"/>
+    <dubbo:reference interface="com.tudou.base.goods.service.IGoodsTypeService" id="baseGoodsTypeService"
+                     check="false"/>
+    <dubbo:reference interface="com.tudou.base.goods.service.IGoodsUnitService" id="goodsUnitService" check="false"/>
+    <dubbo:reference interface="com.tudou.base.common.service.ICommonService" id="commonService" check="false"/>
+
+</beans>  
