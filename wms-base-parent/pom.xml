@@ -42,7 +42,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <org.springframework.version>4.3.7.RELEASE</org.springframework.version>
-        <org.apache.shiro.version>1.2.2</org.apache.shiro.version>
+        <org.apache.shiro.version>1.8.0</org.apache.shiro.version>
         <new.sf.cglib>2.2.2</new.sf.cglib>
         <wms-base.version>1.0-SNAPSHOT</wms-base.version>
         <wms-base-config.version>1.0-SNAPSHOT</wms-base-config.version>
